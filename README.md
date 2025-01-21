@@ -8,7 +8,7 @@ I thoroughly enjoy playing, as well as watching, football and basketball.
 My favorite NBA team being the **Los Angeles Lakers**.
 My NFL team is the **Philadelphia Eagles**. _Go Birds!!_
 
-![Kobe](https://images.app.goo.gl/K9V9yrj2a93NFgXL8)
+![Kobe](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Feagles%2Fcomments%2Feubm5h%2Fin_absolute_shock_hearing_about_this_rip_kobe%2F&psig=AOvVaw0f6x5T70GPiVPyoo0kWf0A&ust=1737572838571000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMCj2rLBh4sDFQAAAAAdAAAAABAE)
 
 
 ## Websites I Recommend
