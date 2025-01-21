@@ -6,7 +6,10 @@ I visited about 7 different countries during that time, the most memorable being
 ## My Interests
 I thoroughly enjoy playing, as well as watching, football and basketball. 
 My favorite NBA team being the **Los Angeles Lakers**.
-My NFL team is the **Philadelphia Eagles**. Go Birds!! 
+My NFL team is the **Philadelphia Eagles**. _Go Birds!!_
+
+![Kobe](https://images.app.goo.gl/K9V9yrj2a93NFgXL8)
+
 
 ## Websites I Recommend
 1. [ESPN](https://www.espn.com) - Stay up to date with the latest sports news.
