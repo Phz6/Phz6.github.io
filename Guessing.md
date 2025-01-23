@@ -6,7 +6,7 @@ C --> D([User inputs Guess])
 D --> E([Is User's Guess Correct?])
 E -- Yes --> F([Congratulate User])
 E -- No --> G([Ask User to Guess Again])
-G --> C
+G --> D
 F --> H([End Game])
 ```
 
