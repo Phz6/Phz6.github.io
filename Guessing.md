@@ -10,8 +10,8 @@ G --> C
 F --> H([End Game])
 ```
 
-1. Program will Generate a Random Number 1-100/
-2. User will input thier Guess of the number/
-3. If User is correct, game will End/
-4. If User is incorrect, they must Guess Again/
+1. Program will Generate a Random Number 1-100
+2. User will input thier Guess of the number
+3. If User is correct, game will End
+4. If User is incorrect, they must Guess Again
 
