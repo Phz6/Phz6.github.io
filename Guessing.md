@@ -4,7 +4,7 @@ Start([Start]) --> B([Generate Random Number])
 B --> C([Ask User to guess Number 1-100])
 C --> D([User inputs Guess])
 D --> E([Is User's Guess Correct?])
-E -- Yes --> F([Congragulate User])
+E -- Yes --> F([Congratulate User])
 E -- No --> G([Ask User to Guess Again])
 G --> C
 F --> H([End Game])
