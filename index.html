@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <body>
-        <!--both elements should be standard on all webpages/changes to the viewport to be compatible on all devices-->
+        <!--both the following meta elements should be standard on all webpages/changes to the viewport to be compatible on all devices-->
+        <!--UTF-8 stands for Unicode Transformation Format-8-->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <img src="masterpiece.jpg" alt="Art on the Ceiling of a Chapel">
-            <h1>
+            <h1 class="center">
                 Welcome to my masterpiece! I'm Justin F.
             </h1>
-            <p>
+            <p class="center">
                 I am currently enrolled at Wake Tech in pursuit of transfering to NC State University. My major is Computer Science. I love all sports and recently decided I wanted to get into running marathons.
             </p>
         </body>
-        <title>My Personal Introduction</title>
+        <title class="center">My Personal Introduction</title>
         <style> body {background-color:#406260;}
             h1{color:#6EC181;}
             p{color: #6EC181;}
@@ -23,6 +24,13 @@
                 object-fit: cover;
                 margin: 0 auto;
             }
+
+            .center{
+                text-align: center;
+            }
+            
         </style>
     </head>
 </html>
+
+<!--margin centers the image to center text it is 'text-align'-->
