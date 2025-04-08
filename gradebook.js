@@ -1,7 +1,7 @@
 // TODO: Fetch data from the PostgreSQL database (to be implemented later)
 function fetchGradeData() {
     // This function will query the PostgreSQL database and return grade data
-    console.log("Fetching grade data...")
+    console.log("Fetching grade data...");
 }
 
 // TODO: Populate the table with grade data
@@ -13,5 +13,5 @@ function populateGradebook (data) {
 // TODO: Remove This
 // Call the stubs to demonstrate the workflow
 const gradeData = fetchGradeData ();
-populateGradebook (gradeData)
+populateGradebook (gradeData);
 // END REMOVE
