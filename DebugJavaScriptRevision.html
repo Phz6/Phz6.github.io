@@ -47,6 +47,7 @@
             }
 
             const monthlyPayment = (principle * rate * monthlyRate) / (monthlyRate - 1);
+            // CHANGED SPELLING OF PRINCIPLE IN EQUATION TO MATCH CODE
             document.getElementById("result").innerText = `Your monthly payment is $${monthlyPayment.toFixed(2)}`;
         }
     </script>
