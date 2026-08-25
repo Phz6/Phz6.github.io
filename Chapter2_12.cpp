@@ -1,3 +1,5 @@
+//This program converst seconds to hours, minutes, and seconds
+
 #include <iostream>
 #include <string>
 using namespace std;   
