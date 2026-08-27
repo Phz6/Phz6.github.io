@@ -26,9 +26,13 @@ int main()                                           //Line 4
     cout << endl;                                    //Line 12
 
     cout << "Line 13: secondNum = " << secondNum 
+<<<<<<< HEAD
          << endl;       
                                       //Line 13
 cout << "Line 14: NUMBER + 1 = " << NUMBER + 1 << endl;
+=======
+         << endl;                                    //Line 13
+>>>>>>> e09297b5989c46e35fb9d9f95cc7043623263837
 
     firstNum = firstNum + NUMBER + 2 * secondNum;    //Line 14
 

@@ -5,7 +5,11 @@
 
 using namespace std;                                //Line 3
 
+<<<<<<< HEAD
 int main()                                          //Line 4ygyg
+=======
+int main()                                          //Line 4
+>>>>>>> e09297b5989c46e35fb9d9f95cc7043623263837
 {                                                   //Line 5
     string firstName;                               //Line 6
     string lastName;                                //Line 7
