@@ -1,39 +1,43 @@
-//
+//This program will take in the last name, building code, salary, and employment status from the employee. 
+// It will then calculate a new salary based on the employment status and output all of the 
+// information entered and calculated.
 
 #include <iostream>
 #include <string>
 #include <iomanip>
-using namespace std; 
-setw(20);
+using namespace std;
 
 int main() {
        
-    double salary;
+    double salary, newSalary;
     string lastName, buildingLocation, employmentStatus;
-    char buildingCode;
+    char buildingCode;                      //decleration of variables
 
-        cout << "Enter last name:";
-        cin >> lastname;
+        cout << left << "Enter last name:";
+        cin >> lastName;
 
         cout << "Enter building code:";
         cin >> buildingCode;
-            if (buildingCode == 'N') {
+          switch (buildingCode) {           //switch statement to determine building location based on building code
+           
+           case 'n':
+           case 'N':
                 buildingLocation = "Wake, North Carolina";
-
-            else if (buildingCode == 'D') {
+           
+           case 'd':
+           case 'D':
                 buildingLocation = "Washington, DC";
-            }
-            else if (buildingCode == 'V') {
+           
+           case 'v':
+           case 'V':
                 buildingLocation = "Las Vegas, Nevada";
-            }
-            else if (buildingCode == 'T') {
+           
+           case 't':
+           case 'T':
                 buildingLocation = "Austin, Texas";
-            }
-            else {
-                cout << "BUILDING CODE ERROR" << endl;
-            }
-            }
-    
+           
+           break;
+           }
 
         cout << "Enter Salary:";
         cin >> salary;
@@ -42,7 +46,7 @@ int main() {
         cin >> employmentStatus;
             if (employmentStatus == "1") {
                 employmentStatus = "Full-time";
-                newSalary = (salary * .03) + salary;
+                newSalary = (salary * .03) + salary;            //if statement to determine employment status and calculate new salary based on employment status
             }
             else if (employmentStatus == "2") {
                 employmentStatus = "Part-time";
@@ -54,13 +58,12 @@ int main() {
 
         cout << string (80, '-') << endl;
         
-        cout << fixed << setprecision(2) << setw(20) << "Last Name: " << lastName << endl\
+        cout << fixed << setprecision(2) << setw(20) << "Last Name: " << lastName << endl\          //output of all the information entered and calculated
              << setw(20) << "Building Code: " << buildingCode << endl\
              << setw(20) << "Building Location: " << buildingLocation << endl\
              << setw(20) << "Employment Status: " << employmentStatus << endl\
              << setw(20) << string(20, '-') << endl\
-             << setw(20) << setfill('.') << "Current Salary: $" << salary << endl\
-             << setw(20) << setfill('.') << "New Salary: $" << newSalary << endl;
+             << setw(20) << "Current Salary: $" << setfill('.') << salary << endl\
+             << setw(20) << "New Salary: $" << setfill('.') << newSalary << endl;
 
-
-}
+        }
