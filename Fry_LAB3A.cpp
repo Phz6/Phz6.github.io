@@ -27,7 +27,6 @@ int main() {
     cout << fixed << setprecision(2);
 
     for (int i=1; i <= 4; i++) {
-        cout << left << itemInv << "  ";
         getline(inFile, itemName);
         inFile >> itemCost;
         inFile.ignore(1000, '\n');
@@ -86,9 +85,9 @@ int main() {
     }
     double tax = totalCost * TAX_RATE;
 
-    cout << endl
-    cout << left << setw(20) << "Subtotal:" << "$" << totalCost << endl;
-    cout << "Sales Tax (" << TAX_RATE * 100 << "%): $" << tax << endl;
-    cout << left << setw(20) << "Amount Due::" << "$" << totalCost + tax << endl;
+    cout << endl;
+    cout << left << setw(20) << "Subtotal:" << "$" << right << totalCost << endl;
+    cout << "Sales Tax (" << TAX_RATE * 100 << "%): $" << right << tax << endl;
+    cout << left << setw(20) << "Amount Due::" << "$" << right << totalCost + tax << endl;
     return 0;
 }
