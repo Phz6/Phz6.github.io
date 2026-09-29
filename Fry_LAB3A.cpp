@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <math.h>
 
 using namespace std;
 
@@ -13,8 +12,7 @@ int main() {
     double itemCost, totalCost=0;
     int itemInv=1, saleNum=1, itemCount=0;
     double price1, price2, price3, price4;
-
-    
+    const double TAX_RATE = 0.06;
     ifstream inFile;
     inFile.open("jerseyNameCost.txt");
 
@@ -31,12 +29,10 @@ int main() {
     for (int i=1; i <= 4; i++) {
         cout << left << itemInv << "  ";
         getline(inFile, itemName);
-        cout << left << itemName << "  $"; 
         inFile >> itemCost;
-        cout << right << itemCost << endl;
-       
-        inFile.ignore();
-        
+        inFile.ignore(1000, '\n');
+        cout << left << setw(4) << itemInv << setw(37) << itemName << "  $" << itemCost << endl;
+
         switch (i) {
         case 1: price1 = itemCost;
             break;
@@ -46,17 +42,15 @@ int main() {
             break;
         case 4: price4 = itemCost;
             break;
-
+        }
          itemInv++;
-    } 
     }
-    
-    inFile >> itemCost;
 
 
     while (cin) {
         
         cout << "Enter the option for the jersey [1/2/3/4] or 99 to calculate total: ";
+        inFile.close();
         cin >> saleNum;
 
         
@@ -66,7 +60,7 @@ int main() {
         }
 
         if (saleNum < 1 || saleNum > 4) {
-            cout << "Invalid Selection" << endl;
+            cout << "Invalid selection" << endl;
             continue;
         }
 
@@ -90,9 +84,11 @@ int main() {
         cout << "Your subtotal is: $" << totalCost << endl;
         
     }
+    double tax = totalCost * TAX_RATE;
 
-        
-        
-
-    }
+    cout << endl
+    cout << left << setw(20) << "Subtotal:" << "$" << totalCost << endl;
+    cout << "Sales Tax (" << TAX_RATE * 100 << "%): $" << tax << endl;
+    cout << left << setw(20) << "Amount Due::" << "$" << totalCost + tax << endl;
+    return 0;
 }
