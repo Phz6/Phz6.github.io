@@ -10,7 +10,7 @@ int main() {
     
     const string SENTINEL = "99";
     string itemName;
-    double itemCost, totalCost;
+    double itemCost, totalCost=0;
     int itemInv=1, saleNum=1, itemCount=0;
     double price1, price2, price3, price4;
 
@@ -26,20 +26,18 @@ int main() {
     cout << "Welcome to NFL Shop!" << endl;
     cout << "Jersey Menu:" << endl;
 
+    cout << fixed << setprecision(2);
+
     for (int i=1; i <= 4; i++) {
         cout << left << itemInv << "  ";
         getline(inFile, itemName);
         cout << left << itemName << "  $"; 
         inFile >> itemCost;
         cout << right << itemCost << endl;
-        itemInv++;
+       
         inFile.ignore();
-         
-    }
-    
-    inFile >> itemCost;
-
-    switch (i) {
+        
+        switch (i) {
         case 1: price1 = itemCost;
             break;
         case 2: price2 =itemCost;
@@ -48,14 +46,29 @@ int main() {
             break;
         case 4: price4 = itemCost;
             break;
+
+         itemInv++;
+    } 
     }
-    //once you get the data pulled correctly, each in its onwn variable, code will need a switch
-    // statement to correctly handle the selected jersey and total amount due.
+    
+    inFile >> itemCost;
+
 
     while (cin) {
         
         cout << "Enter the option for the jersey [1/2/3/4] or 99 to calculate total: ";
         cin >> saleNum;
+
+        
+
+        if (saleNum == 99) {
+                break;
+        }
+
+        if (saleNum < 1 || saleNum > 4) {
+            cout << "Invalid Selection" << endl;
+            continue;
+        }
 
         switch (saleNum) {
             case 1: totalCost += price1;
@@ -71,20 +84,12 @@ int main() {
         cout << "You purchased: ";
         for (int s = 0; s < itemCount; s++) {
                 cout << "*";
-                cout << "Your subtotal is: $" << totalCost << endl;
+        }
+        
+        cout << " item(s)" << endl;
+        cout << "Your subtotal is: $" << totalCost << endl;
         
     }
-
-        if (saleNum == 99) {
-                break;
-        }
-
-        if (saleNum < 1 || saleNum > 4) {
-            cout << "Invalid Selection" << endl;
-            continue;
-        }
-
-        
 
         
         
