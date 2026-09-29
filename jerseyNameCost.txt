@@ -1,0 +1,8 @@
+Standard Jersey
+14.99
+Standard Jersey with Name
+19.99
+Standard Jersey with NFL Logo
+16.99
+Special Edition Team Jersey
+29.99
