@@ -30,7 +30,7 @@ int main() {
         getline(inFile, itemName);
         inFile >> itemCost;
         inFile.ignore(1000, '\n');
-        cout << left << setw(4) << itemInv << setw(37) << itemName << "  $" << itemCost << endl;
+        cout << left << setw(4) << itemInv << setw(37) << itemName << "$" << itemCost << endl;
 
         switch (i) {
         case 1: price1 = itemCost;
@@ -87,7 +87,7 @@ int main() {
 
     cout << endl;
     cout << left << setw(20) << "Subtotal:" << "$" << right << totalCost << endl;
-    cout << "Sales Tax (" << TAX_RATE * 100 << "%): $" << right << tax << endl;
-    cout << left << setw(20) << "Amount Due::" << "$" << right << totalCost + tax << endl;
-    return 0;
+    cout << "Sales Tax (" << TAX_RATE * 100 << "%):  $" << right << tax << endl;
+    cout << left << setw(20) << "Amount Due:" << "$" << right << totalCost + tax << endl;
+    return 0; 
 }
