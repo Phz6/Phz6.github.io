@@ -4,7 +4,7 @@
 using namespace std;
 
 // declare function prototypes
-void getAttemptAndCompletes(int& attempts, int& completions, int yardage = 25);
+void getAttemptAndCompletes(int& attempts, int& completions, int yardage = 26);
 void getValidInput(int& attempts, int& completions, int yardage);
 double calcPercent(int attempts, int completions);
 int main()
@@ -31,15 +31,22 @@ int main()
 }
 
 void getAttemptAndCompletes(int& attempts, int& completions, int yardage) {
-	int range = 0;
-	cout << "Enter the number of attempts followed by completes from " << yardage-15 << " - " << yardage << " yards: ";
+	if (yardage <= 15) {
+	cout << "Enter the number of attempts followed by completes from 0 - "<< yardage << " yards: ";
+	} else if (yardage >15 && yardage <=25) {
+		cout << "Enter number of attempts followed by completes from 16 - " << yardage << " yards: ";
+	} else {
+		cout << "Enter number of attempts followed by completes from more than 25 yards: ";
+	}
 	cin >> attempts >> completions;
 	getValidInput(attempts, completions, yardage);
 }
 
 void getValidInput(int& attempts, int& completions, int yardage) {
-	if (attempts < 0 || completions < 0 || completions > attempts) {
+	if (attempts < 0 || completions < 0 || completions > attempts || cin.fail()) {
 		cout << "Please re-enter valid values." << endl;
+		cin.clear();
+		cin.ignore();
 		getAttemptAndCompletes(attempts, completions, yardage);
 		return;
 	}
@@ -48,5 +55,5 @@ void getValidInput(int& attempts, int& completions, int yardage) {
 double calcPercent(int attempts, int completions) {
 	if (attempts == 0)
 		return 0;
-	return (double)completions / attempts * 100;
+	return (double)completions / attempts;
 }
