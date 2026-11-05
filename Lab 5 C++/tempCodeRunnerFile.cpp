@@ -1,0 +1,1 @@
+        getline(infile, genre);

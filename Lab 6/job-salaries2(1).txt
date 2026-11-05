@@ -1,0 +1,16 @@
+Surgeon
+250000 - 500000
+Anesthesiologist
+239200 - 400000
+Corporate Lawyer
+180000 - 290000
+Investment Banker
+150000 - 350000
+AI Engineer / Data Scientist
+120000 - 220000
+Chief Executive Officer (CEO)
+180000 - 400000
+Radiologist
+239200 - 300000
+Senior Software Architect
+130000 - 210000
