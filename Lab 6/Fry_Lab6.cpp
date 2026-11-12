@@ -1,9 +1,23 @@
-//Develop a C++ program “YourLastname_Lab6” which reads data from the attached text
-//files “job-salaries.txt” and job-salaries2.txt. Your program should prompt the user
-//for the name of the input file name. Your program should be able to run with either
-//input file and will require you to run your program twice, once for each file.
-//After the file is opened successfully, your program should perform the following data
-//analytic tasks:
+//***
+// Program:     Fry_Lab6
+// Author:      Justin Fry
+// Course:      CSC134 C++ Programming
+// Assignment:  Lab 6 - Arrays and Strings
+// Date:        11/09/2026
+//
+// Description: Reads job titles and salary ranges from a text file entered
+//              by the user (job-salaries.txt or job-salaries2.txt). Each job
+//              is stored using parallel arrays: titles in a 1D string array,
+//              low and high salaries in a 2D int array, and average salaries
+//              in a 1D double array. The program displays every job with its
+//              salaries, reports the jobs with the highest and lowest average
+//              salary, then sorts the jobs by average salary in ascending
+//              order with a selection sort and displays them again.
+//
+// Input:       A text file in which each job takes two lines: the job title,
+//              followed by a salary range such as "29000 - 56000".
+// Output:      Formatted tables of job salary data printed to the screen.
+//****
 
 #include <iostream>
 #include <fstream>
@@ -17,6 +31,7 @@ void displayJobs(const string jobs[], const int salaryRanges[][2], const double 
 void sortJobs(string jobs[], int salaryRanges[][2], double avgSalary[], int numJobs);
 
 int main() {
+    const int MAX_JOBS = 20;
     string filename;
     ifstream inFile;
 
@@ -29,20 +44,31 @@ int main() {
         return 1;
     }
 
-    string jobs[20];
-    int salaryRanges[20][2];
-    double avgSalary[20];
+    string jobs[MAX_JOBS];
+    int salaryRanges[MAX_JOBS][2];
+    double avgSalary[MAX_JOBS];
     int numJobs = 0;
 
     //Read at most 20 jobs, each stored as a title line followed by a salary range line
     string jobTitle, jobSalary;
-    while (numJobs < 20 && getline(inFile, jobTitle) && getline(inFile, jobSalary)) {
+    while (numJobs < MAX_JOBS && getline(inFile, jobTitle) && getline(inFile, jobSalary)) {
+        //The data files were saved on Windows, so remove a trailing '\r' if one is there
+        if (!jobTitle.empty() && jobTitle.back() == '\r') {
+            jobTitle.pop_back();
+        }
+        if (!jobSalary.empty() && jobSalary.back() == '\r') {
+            jobSalary.pop_back();
+        }
+
         //Split a range such as "29000 - 56000" at the dash
         size_t dash = jobSalary.find('-');
+        if (dash == string::npos) {
+            continue;   //skip a line that is not a salary range
+        }
 
         jobs[numJobs] = jobTitle;
-        salaryRanges[numJobs][0] = stod(jobSalary.substr(0, dash));
-        salaryRanges[numJobs][1] = stod(jobSalary.substr(dash + 1));
+        salaryRanges[numJobs][0] = stoi(jobSalary.substr(0, dash));
+        salaryRanges[numJobs][1] = stoi(jobSalary.substr(dash + 1));
         avgSalary[numJobs] = (salaryRanges[numJobs][0] + salaryRanges[numJobs][1]) / 2.0;
         numJobs++;
     }
@@ -53,9 +79,9 @@ int main() {
         return 1;
     }
 
-    cout << fixed << setprecision(2);
+    cout << fixed << setprecision(0);
 
-    cout << "Job Salary Data";
+    cout << endl;
     displayJobs(jobs, salaryRanges, avgSalary, numJobs);
 
     //Find the lowest and highest average salary
@@ -70,12 +96,17 @@ int main() {
         }
     }
 
-    cout << "Lowest average salary:  " << avgSalary[lowestIndex] << " (" << jobs[lowestIndex] << ")\n";
-    cout << "Highest average salary: " << avgSalary[highestIndex] << " (" << jobs[highestIndex] << ")\n";
+    cout << "\n\nThis job has the highest average salary:\n";
+    cout << string(41, '-') << endl;
+    cout << left << setw(48) << jobs[highestIndex] << avgSalary[highestIndex] << endl;
+
+    cout << "\nThis job has the lowest average salary:\n";
+    cout << string(40, '-') << endl;
+    cout << left << setw(48) << jobs[lowestIndex] << avgSalary[lowestIndex] << endl;
 
     sortJobs(jobs, salaryRanges, avgSalary, numJobs);
 
-    cout << "\nJobs Sorted by Average Salary (Ascending)\n";
+    cout << "\nThe jobs are sorted by average salary in ascending order:\n";
     displayJobs(jobs, salaryRanges, avgSalary, numJobs);
 
     return 0;
@@ -83,15 +114,17 @@ int main() {
 
 //Displays the job title, low salary, high salary, and average salary in a table
 void displayJobs(const string jobs[], const int salaryRanges[][2], const double avgSalary[], int numJobs) {
-    cout << left << setw(48) << "Job Title"
-         << right << setw(12) << "Low" << setw(12) << "High" << setw(14) << "Average" << endl;
-    cout << string(86, '-') << endl;
+    cout << left << setw(48) << "Job"
+         << right << setw(18) << "Low Salary"
+         << setw(18) << "High Salary"
+         << setw(18) << "Average Salary" << endl;
+    cout << string(102, '-') << endl;
 
     for (int i = 0; i < numJobs; i++) {
         cout << left << setw(48) << jobs[i]
-             << right << setw(12) << salaryRanges[i][0]
-             << setw(12) << salaryRanges[i][1]
-             << setw(14) << avgSalary[i] << endl;
+             << right << setw(18) << salaryRanges[i][0]
+             << setw(18) << salaryRanges[i][1]
+             << setw(18) << avgSalary[i] << endl;
     }
 }
 
@@ -105,7 +138,25 @@ void sortJobs(string jobs[], int salaryRanges[][2], double avgSalary[], int numJ
                 minIndex = j;
             }
         }
+
+        //Move the smallest remaining job into position i, using a temporary
+        //variable for each array so no value is overwritten before it is saved
+        if (minIndex != i) {
+            string tempJob = jobs[i];
+            jobs[i] = jobs[minIndex];
+            jobs[minIndex] = tempJob;
+
+            int tempLow = salaryRanges[i][0];
+            salaryRanges[i][0] = salaryRanges[minIndex][0];
+            salaryRanges[minIndex][0] = tempLow;
+
+            int tempHigh = salaryRanges[i][1];
+            salaryRanges[i][1] = salaryRanges[minIndex][1];
+            salaryRanges[minIndex][1] = tempHigh;
+
+            double tempAvg = avgSalary[i];
+            avgSalary[i] = avgSalary[minIndex];
+            avgSalary[minIndex] = tempAvg;
+        }
     }
 }
-
-  
