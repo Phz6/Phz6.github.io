@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/fry.justin/Documents/GitHub/Phz6.github.io/Lab 6",
+      "program": "/Users/fry.justin/Documents/GitHub/Phz6.github.io/Lab 6/build/Debug/outDebug"
+    }
+  ]
+}
