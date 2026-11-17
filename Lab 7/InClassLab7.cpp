@@ -4,7 +4,7 @@
 #include <iomanip>
 #include "InClassLab7Header.h"
 
-void getData(ifstream& infile, Student studentArray[], int listSize);
+string getBestSkill(Student studentArray[]);
 
 int main() {
 
@@ -39,4 +39,35 @@ for (int i = 0; i < 6; i++) {
 }
 
 }
+
+string getBestSkill() {
+    
+    for (int i = 0; i < 6; i++) 
+        
+        if (studentArray[i].mathSkills > studentArray[i].scienceSkills &&
+        studentArray[i].mathSkills > studentArray[i].presentationSkills &&
+        studentArray[i].mathSkills > studentArray[i].musicSkills) 
+        
+            cout << studentArray[i].name << " best skill is Math" << endl;
+        
+        else if (studentArray[i].scienceSkills > studentArray[i].mathSkills &&
+        studentArray[i].scienceSkills > studentArray[i].presentationSkills &&
+        studentArray[i].scienceSkills > studentArray[i].musicSkills)
+
+            cout << studentArray[i].name << " best skill is Science" << endl;
+
+        else if (studentArray[i].musicSkills > studentArray[i].mathSkills &&
+        studentArray[i].musicSkills > studentArray[i].presentationSkills &&
+        studentArray[i].musicSkills > studentArray[i].scienceSkills)
+            
+            cout << studentArray[i].name << " best skill is Music" << endl;
+        
+        else if (studentArray[i].presentationSkills > studentArray[i].mathSkills &&
+        studentArray[i].presentationSkills > studentArray[i].musicSkills &&
+        studentArray[i].presentationSkills > studentArray[i].scienceSkills)
+
+            cout << studentArray[i].name << " best skill is Presentation" << endl;
+
+        
+    }
 
