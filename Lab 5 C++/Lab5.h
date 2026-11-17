@@ -1,34 +1,23 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
-
-using namespace std;
+using namespace icecream;
 
 namespace icecream {
-    int vanillaCount = 0;
-    int chocolateCount = 0;
-    int strawberryCount = 0;
-    int bananaCount = 0;
-    int oreoCount = 0;
-    
     enum rating { EXCELLENT, GOOD, OK, NOT_GOOD, BAD };
 
     enum flavors { VANILLA, CHOCOLATE, STRAWBERRY, BANANA, OREO};
 
     rating getRating(double vScore, double cScore, double sScore, double bScore, double oScore){
-        double average = (vScore + cScore + sScore + bScore + oScore) / 5.0;
-
+        average = (vScore + cScore + sScore + bScore + oScore) / 5.0;
         if (average >= 9.0) {
             return EXCELLENT;
-        } else if (average >= 7.0) {
+        } else if (average >= 7.0 && average < 9.0) {
             return GOOD;
-        } else if (average >= 5.0) {
+        } else if (average >= 5.0 && average < 7.0) {
             return OK;
-        } else if (average >= 3.0) {
+        } else if (average >= 3.0 && average < 5.0) {
             return NOT_GOOD;
+        } else {
+            return BAD;
         }
-
-        return BAD;
     }
 
     flavors getFavoriteFlavor(double vScore, double cScore, double sScore, double bScore, double oScore){
@@ -45,7 +34,7 @@ namespace icecream {
         }
     }
 
-    void incrementFlavorCount(flavors favorite, int& vanillaCount, int& chocolateCount, int& strawberryCount, int& bananaCount, int& oreoCount){
+    void incrementFlavorCount(flavors favorite){
         switch (favorite) {
             case VANILLA:
                 vanillaCount++;
@@ -62,12 +51,10 @@ namespace icecream {
             case OREO:
                 oreoCount++;
                 break;
-            default:
-                break;
-        }
+        }   
     }
     
-    void convertRateToMessage (rating rate, flavors favFlavor, int vanillaCount, int chocolateCount, int strawberryCount, int bananaCount, int oreoCount){
+    string convertRateToMessage (rating rate, flavors favFlavor){
         cout << "Customer rating is ";
         switch (rate){
             case EXCELLENT:
@@ -85,18 +72,15 @@ namespace icecream {
             case BAD:
                 cout << "bad.";
                 break;
-            default:
-                cout << "unknown.";
-                break;
         }
-        cout << " Favorite: ";
+        cout << "Favorite: ";
         switch (favFlavor){
             case VANILLA:
                 cout << "Vanilla.";
                 break;
             case CHOCOLATE:
                 cout << "Chocolate.";
-                break;
+                break;  
             case STRAWBERRY:
                 cout << "Strawberry.";
                 break;
@@ -106,15 +90,13 @@ namespace icecream {
             case OREO:
                 cout << "Oreo.";
                 break;
-            default:
-                cout << "Unknown flavor.";
-                break;
         }
-        cout << "\nTotals for each flavor:" << endl;
+        cout << "Totals for each flavor:" << endl;
         cout << "Vanilla: " << vanillaCount << endl;
         cout << "Chocolate: " << chocolateCount << endl;
         cout << "Strawberry: " << strawberryCount << endl;
         cout << "Banana: " << bananaCount << endl;
         cout << "Oreo: " << oreoCount << endl;
-    }
+}
+
 }
