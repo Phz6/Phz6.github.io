@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/fry.justin/Documents/GitHub/Phz6.github.io/Lab 7",
-      "program": "/Users/fry.justin/Documents/GitHub/Phz6.github.io/Lab 7/build/Debug/outDebug"
+      "cwd": "/Users/fry.justin/Documents/GitHub/Phz6.github.io/Ch9 Lab7",
+      "program": "/Users/fry.justin/Documents/GitHub/Phz6.github.io/Ch9 Lab7/build/Debug/outDebug"
     }
   ]
 }
